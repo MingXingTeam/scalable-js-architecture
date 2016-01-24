@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="test">
+		
+	</div>
+	<!-- 层次的关系
+
+	模块：只能访问Sandbox  之间不能互相访问
+	Sandbox.js:  可以访问模块或者横向扩展（Core.communication.js 可以访问Core）
+	Core.js:     只能访问sandbox
+	baseLib:     such as jquery
+	
+	-->
+	<script data-require="jquery@*" data-semver="2.1.4" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script  src="Sandbox.js"></script>
+	<script  src="Core.js"></script>
+	<script  src="Core.DomManipulation.js"></script>
+	<script  src="Core.Communication.js"></script> 
+	<script  src="Core.Ajax.js"></script> 
+	<script  src="./Modules/Helloworld.js"></script>
+
+	<script>
+		Core.start('Helloworld');//依次执行模块的构造方法、activate
+
+
+	</script>
+</body>
+</html>
